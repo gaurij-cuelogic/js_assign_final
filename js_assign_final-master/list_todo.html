@@ -1,43 +1,53 @@
 <html>
-    <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-            <link rel ="stylesheet" href="./css/profile.css">
-           
-    </head>
-    <body onload="list_todo()">
-            <header>
-                        <img id="logo" src="logo2.png" alt="logo" height:150px;><br>
-                        <img id="userImage" src="" height="150px" width="150px"/>
-                        <nav>
-                                        <ul>
-                                           <li><button type="submit" value="Submit" onclick="window.location.href ='create_todo.html'" class="buttons">Create todo</button> </li>
-                                            <li><button type="submit" value="Submit" onclick="window.location.href ='profile.html'" class="buttons">Profile</button></li>
-                                            <li><button type="submit" value="Submit" onclick="window.location.href ='signin.html'" class="buttons">Logout</button></li>
-                                         
-                                       </ul>
-                                   </nav>
-                                   
-            </header>
-    <table id="list_table">
-        <tr id="">
-          <th> <input type="checkbox" id="all"> </th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Type</th>
-          <th>Due Date</th>
-          <th>Is reminder</th>
-          <th>Reminder date</th>
-          <th>Is public</th>
-          <th> </th>
-    </tr>
-     </table>
-     <div id = allbuttons>
-        <button type="submit" value="Submit" onclick="cancel_todo()" class="buttons"  >Cancel</button>
-        <button type="submit" value="Submit" onclick="delete_todo()" class="buttons"  >Delete</button>
-     <button type="submit" value="submit" onclick="location.href = 'filter_todo.html'" class="buttons">Filter by type</button>
-</div>
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="./css/profile.css">
+
+</head>
+
+<body onload="list_todo()">
+        <header>
+                <img id="logo" src="logo2.png" alt="logo" height:150px;>
+                <br>
+                <img id="userImage" src="" height="150px" width="150px" />
+                <nav>
+                        <ul>
+                                <li>
+                                        <button type="submit" value="Submit" onclick="window.location.href ='create_todo.html'" class="buttons">Create todo</button>
+                                </li>
+                                <li>
+                                        <button type="submit" value="Submit" onclick="window.location.href ='profile.html'" class="buttons">Profile</button>
+                                </li>
+                                <li>
+                                        <button type="submit" value="Submit" onclick="window.location.href ='signin.html'" class="buttons">Logout</button>
+                                </li>
+
+                        </ul>
+                </nav>
+
+        </header>
+        <table id="list_table">
+                <tr id="">
+                        <th>
+                                <input type="checkbox" id="all"> </th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Due Date</th>
+                        <th>Is reminder</th>
+                        <th>Reminder date</th>
+                        <th>Is public</th>
+                        <th> </th>
+                </tr>
+        </table>
+        <div id=a llbuttons>
+                <button type="submit" value="Submit" onclick="cancel_todo()" class="buttons">Cancel</button>
+                <button type="submit" value="Submit" onclick="delete_todo()" class="buttons">Delete</button>
+                <button type="submit" value="submit" onclick="location.href = 'filter_todo.html'" class="buttons">Filter by type</button>
+        </div>
 </body>
-<script type = "text/javascript" src="./js/list_todo.js"></script>
+<script type="text/javascript" src="./js/list_todo.js"></script>
 
 
 </html>

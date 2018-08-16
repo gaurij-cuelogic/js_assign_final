@@ -1,34 +1,60 @@
 <html>
-    <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link rel ="stylesheet" href="./css/profile.css">
-        
-    </head>
-    <body> 
- 
-        <img id="logo" src="logo2.png" alt="logo"><br>
-        <b><p  class="texts">Name :</p></b> <input type="text" id="todo_name" placeholder="Name of todo" class="inputs" required ><br>
-        <b><p  class="texts">Description :</p></b> <textarea rows="4" columns ="50" id="todo_desc" placeholder="Description of todo" class="inputs" ></textarea><br>
-        <b><p  class="texts">Type :</p></b>
-        <select id="todo_type" class="todo_type">
-                <option value="personal">Personal</option>
-                <option value="shopping">Shopping</option>
-                <option value="work">Work</option>
-                <option value="other">Other</option>
-              </select>
-              <b><p  class="texts">Due date :</p></b><input type="date" id="todo_date" class="inputs">  
-              <b><p  class="texts">Is reminder? :</p></b> 
-              <select id="reminder_type" class="todo_type" onchange="disable()">
-                    <option value="yes" id="Yes">Yes</option>
-                    <option value="no" id="No">No</option><br>
-                    </select> 
-                    <b><p class="texts">Reminder date :</p></b>
-                    <input type="date" id="reminder_date" class="inputs"> 
-                    <b><p id="is_public" class="texts" >Is public? :</p></b>
-                    <input type="radio" id="y_public" value="yes" checked >Yes<br>
-                    <input type="radio" id="n_public" value="no"> No<br>
-                    <button onclick ="create_todo()" class="buttons"id="create_button">Create todo</button>
-                    <button onclick="window.location.href = 'list_todo.html'" class="buttons">List Todo</button>
-    </body>
-        <script type = "text/javascript" src="./js/create_todo.js"></script>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="./css/profile.css">
+
+</head>
+
+<body>
+
+    <img id="logo" src="logo2.png" alt="logo">
+    <br>
+    <b>
+        <p class="texts">Name :</p>
+    </b>
+    <input type="text" id="todo_name" placeholder="Name of todo" class="inputs" required>
+    <br>
+    <b>
+        <p class="texts">Description :</p>
+    </b>
+    <textarea rows="4" columns="50" id="todo_desc" placeholder="Description of todo" class="inputs"></textarea>
+    <br>
+    <b>
+        <p class="texts">Type :</p>
+    </b>
+    <select id="todo_type" class="todo_type">
+        <option value="personal">Personal</option>
+        <option value="shopping">Shopping</option>
+        <option value="work">Work</option>
+        <option value="other">Other</option>
+    </select>
+    <b>
+        <p class="texts">Due date :</p>
+    </b>
+    <input type="date" id="todo_date" class="inputs">
+    <b>
+        <p class="texts">Is reminder? :</p>
+    </b>
+    <select id="reminder_type" class="todo_type" onchange="disable()">
+        <option value="yes" id="Yes">Yes</option>
+        <option value="no" id="No">No</option>
+        <br>
+    </select>
+    <b>
+        <p class="texts">Reminder date :</p>
+    </b>
+    <input type="date" id="reminder_date" class="inputs">
+    <b>
+        <p id="is_public" class="texts">Is public? :</p>
+    </b>
+    <input type="radio" id="y_public" value="yes" checked>Yes
+    <br>
+    <input type="radio" id="n_public" value="no"> No
+    <br>
+    <button onclick="create_todo()" class="buttons" id="create_button">Create todo</button>
+    <button onclick="window.location.href = 'list_todo.html'" class="buttons">List Todo</button>
+</body>
+<script type="text/javascript" src="./js/create_todo.js"></script>
+
 </html>
