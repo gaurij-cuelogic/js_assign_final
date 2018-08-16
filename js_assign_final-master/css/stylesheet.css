@@ -1,0 +1,55 @@
+#logo{
+    height: 200px;
+    width: 230px;
+}
+body{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 60px;
+}
+#link{
+    height: 30px;
+    
+}
+.texts{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 400px;
+}
+
+.inputs{
+    margin-top: -50px;
+    border-radius: 10px;
+    width: 300px;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+#div1{
+    text-align: center;
+}
+
+
+.todo_type{
+    margin-top: -40px;
+    text-align: left;
+    height: 30px;
+    width:100px;
+}
+
+button {
+    background-color: #4CAF50;
+    border-radius: 25px;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+   
+}
+
+button:hover {
+    opacity: 0.8;
+}
+

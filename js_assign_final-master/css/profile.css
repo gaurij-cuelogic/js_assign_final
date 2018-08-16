@@ -1,0 +1,140 @@
+#logo{
+    height: 150px;
+    width: 200px;
+    margin-left: 600px;
+}
+
+.texts{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 550px;
+}
+
+.inputs{
+    margin-left: 550px;
+    margin-top: 0px;
+    border-radius: 10px;
+    width: 300px;
+    box-sizing: border-box;
+    height: 40px;
+}
+
+#m,#f{
+    margin-left: 550px;
+
+}
+.labels{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 550px;
+}
+
+.edit_inputs{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin-left: 400px;
+}
+
+.inputs:hover {
+    border:1px solid  #4CAF50 ;
+}
+
+.links{
+    
+    text-align: center;
+}
+
+
+.buttons{
+    margin-left: 20px;
+    border:none;
+    text-align: center;
+    background-color: #4CAF50;
+    border-radius: 25px;
+    height: 40px;
+    width: 100px;
+    margin-top: 60px;
+    color: white;
+     margin: 0 auto;
+    
+    
+}
+
+#create_button,#signup_submit{
+    margin-left: 600px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#y_public,#n_public{
+   margin-left: 550px;
+}
+.todo_type{
+    font-size: 20px;
+    text-align: center;
+   margin-left: 550px;
+}
+
+#list_table{
+    text-align : center;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 100px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+ul li
+{ 
+    background-color: #4CAF50;
+    padding-right: 40px;
+    padding-top: 20px;
+    border-radius: 25px;
+    display: inline;
+    float: right;
+    text-align: center;
+     
+
+}
+
+li a{
+    padding-left: 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+#image{
+    text-align: center;
+    height: 150px;
+    width: 150px;
+    margin-left: 550px;
+    margin-top: 50px;
+}
+
+.container{
+    text-align: "center";
+    margin: 0 auto;
+}
+
+#edit_profile
+{
+    margin-left: 500px;
+}
+#allbuttons{
+    display: inline;
+    margin-left: 550px;
+    padding-top: 50px;
+
+}

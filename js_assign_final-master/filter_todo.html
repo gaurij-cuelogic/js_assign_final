@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link rel ="stylesheet" href="./css/profile.css">
+    </head>
+    <body>
+            <header>
+                    <img id="logo" src="logo2.png" alt="logo" height:150px;><br>
+                    <nav>
+                                    <ul>
+                                       <li><a href="profile.html"> Profile</a> </li>
+                                        <li><a href="create_todo.html"> Create Todo</a></li>
+                                        <li><a href="list_todo.html"> List todo</a></li>
+                                        <li><a href="signin.html"> Logout</a></li>
+                                     
+                                   </ul>
+                               </nav>
+                               
+        </header>
+        <b><p  class="texts">Type :</p></b>
+        <select id="type_todo" class="todo_type" onchange="filter_todo()">
+                <option value="personal">Personal</option>
+                <option value="shopping">Shopping</option>
+                <option value="work">Work</option>
+                <option value="other">Other</option>
+            
+                </select>
+                <table id="list_table">
+                    <tr id="">
+
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Type</th>
+                      <th>Due Date</th>
+                      <th>Is reminder</th>
+                      <th>Reminder date</th>
+                      <th>Is public</th>
+                </tr>
+                 </table>
+      
+    </body>
+    <script src="./js/filter_todo.js"></script>
+    <script type = "text/javascript" src="./js/list_todo.js"></script>
+
+</html>

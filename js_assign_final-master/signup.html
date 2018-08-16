@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+ <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link rel ="stylesheet" href="./css/profile.css">
+        <title>SignUp Form</title>
+     
+ </head>
+ <body>
+    <img id="logo" src="logo2.png" alt="logo"><br>
+    <div id="div1">
+       <b><p  class="texts">Email :</p></b> <input type="text" id="email" name="email" placeholder="Enter Email" class="inputs" required ><br>
+       <b><p class="texts">First Name : </p></b><input type="text" id="first"  placeholder="Enter First Name"class="inputs" required><br>
+       <b><p class="texts">Last Name :</p> </b><input type="text" id="last"  placeholder="Enter Last Name"class="inputs" required><br>
+       <b><p class= "texts">Password :</p></b><input type="password" id="pwd" placeholder="Enter password" class="inputs" required><br>
+       <b><p id="gender" class="texts" >Gender :</p></b>
+            <input type="radio" id="m" name="gender" value="male" checked >Male<br>
+            <input type="radio" id="f" name="gender" value="female"> Female<br>
+       <b><p class="texts" id="address">Address :</p></b> <textarea id="addresstxt" rows="3" columns="100" placeholder="Enter Address" class="inputs" required></textarea><br>
+       <b><p class="texts">Profile image :</p></b> <input type="file" id="pic" name="pic" accept="image/*" class="inputs"><br>
+       <button onclick="signup()" type="submit" value="Submit" class="buttons" id="signup_submit">Submit</button>
+   </div>
+   <script type="text/javascript" src="./js/signup.js">
+      </script>
+      <script type="text/javascript" src="./js/validate.js">
+      </script>
+      <script type="text/javascript" src="./js/store.js">
+      </script>
+ </body>
+
+</html>
