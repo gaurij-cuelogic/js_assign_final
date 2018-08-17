@@ -1,12 +1,10 @@
 function storeInDb(userData) {
-  //console.log(userData);
-  var get_index = localStorage.getItem("unique_index");  
+  var getIndex = localStorage.getItem("unique_index");  
  var DataArr = ArrayCheck();
 
  DataArr.push(userData);
  console.log(DataArr);
  myJSON = JSON.stringify(DataArr);
- //console.log(myJSON);
  localStorage.setItem("testJSON", myJSON);
   x = localStorage.getItem("testJSON");
   obj = JSON.parse(x);

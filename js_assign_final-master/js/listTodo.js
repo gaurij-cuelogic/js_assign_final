@@ -3,8 +3,7 @@ function listTodo() {
   var data = localStorage.getItem("testJSON");
   var data_obj = JSON.parse(data);
 
- // console.log(data_obj[get_index]);
-  document.getElementById('userImage').src = data_obj[get_index].profilePhoto;
+   document.getElementById('userImage').src = data_obj[get_index].profilePhoto;
 
   if(data_obj[get_index].todo.length<=0)
   {
@@ -70,9 +69,7 @@ function listTodo() {
     input_type.setAttribute("id", "input_type" + i);
 
     newElement_type.appendChild(input_type);
-    //document.getElementById("input_type"+i).value = disp_todotype;
-    // newElement_type.textContent = disp_todotype;
-
+    
     //todo_date
     var newElement_date = document.createElement('td');
     var input_date = document.createElement('input');
@@ -98,19 +95,9 @@ function listTodo() {
 
     input_isreminder.setAttribute("value", disp_todoisreminder);
     input_isreminder.setAttribute("id", "input_isreminder" + i);
+    input_isreminder.setAttribute("onclick","toggle(this.id)");
     newElement_isreminder.appendChild(input_isreminder);
-    input_isreminder.onchange=function(){
-      alert("in disable");
-       if(document.getElementById("input_isreminder"+id).value =="no")
-     {
-       alert("in no")
-       document.getElementById("input_reminderdate" + id).readOnly = true;
-     }
-     else{
-       document.getElementById("input_reminderdate" + id).readOnly = false;
-     }
-   }
-    
+  
 
     //reminder date
     var newElement_reminderdate = document.createElement('td');
@@ -121,6 +108,7 @@ function listTodo() {
     input_reminderdate.setAttribute("readOnly", true)
     input_reminderdate.setAttribute("id", "input_reminderdate" + i);
     newElement_reminderdate.appendChild(input_reminderdate);
+  
 
     //ispublic
     var newElement_ispublic = document.createElement('td');
@@ -133,7 +121,6 @@ function listTodo() {
     var option2 = document.createElement('option');
     option2.text = "no";
     input_ispublic.appendChild(option2);
-    //input_ispublic.setAttribute("readOnly",true);
     input_ispublic.readOnly = true;
     input_ispublic.setAttribute("id", "input_ispublic" + i);
     newElement_ispublic.appendChild(input_ispublic);
@@ -144,14 +131,14 @@ function listTodo() {
     newElement_editbutton.setAttribute("type", "button");
     newElement_editbutton.setAttribute("value", "edit");
     newElement_editbutton.setAttribute("id", i);
-    newElement_editbutton.setAttribute("onclick", "editTodo(this.id).then((obj) => console.log(obj))");
+    newElement_editbutton.setAttribute("onclick", "editTodo(this.id)");
 
     //cancel button
     var newElement_cancelbutton = document.createElement('input');
     newElement_cancelbutton.setAttribute("type", "button");
     newElement_cancelbutton.setAttribute("value", "cancel");
     newElement_cancelbutton.setAttribute("id", i);
-    newElement_cancelbutton.setAttribute("onclick", "cancelTodo(this.id).then((obj) => console.log(obj))");
+    newElement_cancelbutton.setAttribute("onclick", "cancelTodo(this.id)");
 
 
 
@@ -160,7 +147,7 @@ function listTodo() {
     newElement_submitbutton.setAttribute("type", "button");
     newElement_submitbutton.setAttribute("value", "submit");
     newElement_submitbutton.setAttribute("id", i);
-    newElement_submitbutton.setAttribute("onclick", "submit_todo(this.id).then((obj) => console.log(obj))");
+    newElement_submitbutton.setAttribute("onclick", "submitTodo(this.id)");
 
 
 
@@ -176,31 +163,26 @@ function listTodo() {
     newElement_row.appendChild(newElement_cancelbutton);
     newElement_row.appendChild(newElement_submitbutton);
     var list_table = document.getElementById("list_table");
-
-
+  
+   
     list_table.appendChild(newElement_row);
 
     document.getElementById("input_type" + i).value = disp_todotype;
     document.getElementById("input_isreminder" + i).value = disp_todoisreminder;
     document.getElementById("input_ispublic" + i).value = disp_todoispublic;
-    //input_type.setAttribute("value",disp_todotype);
-    //input_ispublic.setAttribute("value",disp_todoispublic);
-
+    
 
   }
 
 }
 
 function editTodo(id) {
-  //console.log(newElement_row);
   document.getElementById("input_name" + id).readOnly = false;
   document.getElementById("input_desc" + id).readOnly = false;
   document.getElementById("input_type" + id).disabled = false;
   document.getElementById("input_date" + id).readOnly = false;
   document.getElementById("input_isreminder" + id).disabled = false;
-  //document.getElementById("input_reminderdate" + id).readOnly = false;
   document.getElementById("input_ispublic" + id).disabled = false;
-  //document.getElementById("input_isreminder" + id).onchange = disableDate();
 }
 
 
@@ -211,8 +193,13 @@ function submitTodo(id) {
   var getIndex = localStorage.getItem("unique_index");
   var data = localStorage.getItem("testJSON");
   var objData = JSON.parse(data);
-
-
+ 
+ if( document.getElementById("input_date" + id).value < document.getElementById("input_reminderdate" + id).value)
+ {
+   alert("due date cannot be before reminder date");
+   return;
+ }
+   
 
   objTodo = {
     todoName: document.getElementById("input_name" + id).value,
@@ -222,7 +209,6 @@ function submitTodo(id) {
     todoIsReminder: document.getElementById("input_isreminder" + id).value,
     todoReminderDate: document.getElementById("input_reminderdate" + id).value,
     todoIsPublic: document.getElementById("input_ispublic" + id).value
-    //todo_attatchments : file 
   }
 
   objData[getIndex].todo[id] = objTodo;
@@ -262,7 +248,6 @@ function deleteTodo() {
     var data = localStorage.getItem("testJSON");
     var dataObj = JSON.parse(data);
 
-    //document.getElementById("list_table").deleteRow(delArray[i]);
 
     dataObj[getIndex].todo.splice(delArray[i], 1);
 
@@ -314,3 +299,17 @@ function cancelTodo() {
 
   }
 }
+
+function toggle(id){
+    
+    id=id.replace("input_isreminder","");
+    
+       if(document.getElementById("input_isreminder" + id).value =="no")
+     {
+       
+       document.getElementById("input_reminderdate" + id).readOnly = true;
+     }
+     else{
+       document.getElementById("input_reminderdate" + id).readOnly = false;
+     }
+   }

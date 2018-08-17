@@ -17,10 +17,10 @@ function profile() {
   var disp_email = obj[get_index].email;
   document.getElementById("email").value = disp_email;
   //first name
-  var disp_firstname = obj[get_index].firstname;
+  var disp_firstname = obj[get_index].firstName;
   document.getElementById("first").value = disp_firstname;
   //last name
-  disp_lastname = obj[get_index].lastname;
+  disp_lastname = obj[get_index].lastName;
   document.getElementById("last").value = disp_lastname;
   //password
   disp_password = obj[get_index].password;
@@ -50,8 +50,6 @@ function editContent() {
   var get_index = localStorage.getItem("unique_index");
   var userData = localStorage.getItem("testJSON");
   var obj = JSON.parse(userData);
-  console.log(userData);
-  //console.log(obj);
 
     
   }
@@ -63,7 +61,6 @@ function profileEdit() {
   var userData = localStorage.getItem("testJSON");
   var obj = JSON.parse(userData);
 
-//  console.log(obj[getIndex].todo);
  todo= obj[getIndex].todo;
   console.log(todo);
   //email
@@ -127,12 +124,10 @@ alert("in profile_cancel");
   var data = localStorage.getItem("testJSON");
   var dataObj = JSON.parse(data);
 
-    
+      
     var disp_email = dataObj[getIndex].email;
-     
     document.getElementById("email").value= disp_email;
     document.getElementById("email").readOnly = true;
-
 
     var disp_firstname = dataObj[getIndex].firstName;
     
@@ -153,4 +148,3 @@ alert("in profile_cancel");
 
     location.reload();
   }
-

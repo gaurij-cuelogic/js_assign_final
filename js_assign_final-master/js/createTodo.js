@@ -31,8 +31,7 @@ function createTodo() {
       todoIsPublic: todoIsPublic,
     }
 
-    //alert(objTodo.todoDueDate);
-    objData[getIndex].todo.push(objTodo);
+     objData[getIndex].todo.push(objTodo);
     myJSON = JSON.stringify(objData);
     localStorage.setItem("testJSON", myJSON);
     window.location.href = "listTodo.html";

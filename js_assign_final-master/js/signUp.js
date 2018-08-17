@@ -5,9 +5,9 @@ function signUp() {
   //email
   userData.email = document.getElementById("email").value;
   //first name  
-  userData.firstname = document.getElementById("first").value;
+  userData.firstName = document.getElementById("first").value;
   //last name
-  userData.lastname = document.getElementById("last").value;
+  userData.lastName = document.getElementById("last").value;
   //password
   userData.password = document.getElementById("pwd").value;
   //gender

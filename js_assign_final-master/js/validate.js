@@ -7,13 +7,13 @@ function validation(userData) {
     var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     if (userData.email.match(reg)) {
       
-      if (userData.firstname == "" || userData.firstname == null) {
+      if (userData.firstName == "" || userData.firstName == null) {
         alert("enter first name");
         return false;
 
       }
       
-      if (userData.lastname == "" || userData.lastname == null) {
+      if (userData.lastName == "" || userData.lastName == null) {
         alert("enter last name");
         return false;
       }

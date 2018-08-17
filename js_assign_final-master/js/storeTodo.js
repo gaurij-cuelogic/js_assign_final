@@ -1,14 +1,13 @@
 function store() {
-  //console.log(todo);
-  var get_index = localStorage.getItem("unique_index");
+   var getIndex = localStorage.getItem("unique_index");
   var data = localStorage.getItem("testJSON");
   var data_obj = JSON.parse(data);
-  todo = data_obj[get_index].todo;
+  todo = data_obj[getIndex].todo;
   console.log(todo);
 
 
   var DataArr = ArrayCheck();
-  DataArr[get_index] = person;
+  DataArr[getIndex] = person;
   myJSON = JSON.stringify(DataArr);
   localStorage.setItem("testJSON", myJSON);
   window.location.href = "list_todo.html"
