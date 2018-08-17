@@ -1,4 +1,4 @@
-function filter_todo() {
+function filterTodo() {
 
 
     var tb = document.getElementById('list_table');
@@ -6,14 +6,14 @@ function filter_todo() {
         tb.deleteRow(1);
     }
     var type = document.getElementById("type_todo").value;
-    var get_index = localStorage.getItem("unique_index");
+    var getIndex = localStorage.getItem("unique_index");
     var data = localStorage.getItem("testJSON");
-    var data_obj = JSON.parse(data);
+    var dataObj = JSON.parse(data);
 
 
-    for (var i = 0; i < data_obj[get_index].p_todo.length; i++) {
+    for (var i = 0; i < dataObj[getIndex].todo.length; i++) {
 
-        if (data_obj[get_index].p_todo[i].todo_type == type) {
+        if (dataObj[getIndex].todo[i].todoType == type) {
             //table row
             var newElement_row = document.createElement('tr');
             index = i;
@@ -23,7 +23,7 @@ function filter_todo() {
             //name
             var newElement_name = document.createElement('td');
             var input_name = document.createElement('input');
-            var disp_todoname = data_obj[get_index].p_todo[i].todo_name;
+            var disp_todoname = dataObj[getIndex].todo[i].todoName;
             input_name.setAttribute("value", disp_todoname);
             input_name.setAttribute("readOnly", true);
             input_name.setAttribute("id", "input_name" + i);
@@ -33,7 +33,7 @@ function filter_todo() {
             //desc
             var newElement_desc = document.createElement('td');
             var input_desc = document.createElement('input');
-            var disp_tododesc = data_obj[get_index].p_todo[i].todo_desc;
+            var disp_tododesc = dataObj[getIndex].todo[i].todoDesc;
             input_desc.setAttribute("value", disp_tododesc);
             input_desc.setAttribute("readOnly", true);
             input_desc.setAttribute("id", "input_desc" + i);
@@ -42,7 +42,7 @@ function filter_todo() {
             //type
             var newElement_type = document.createElement('td');
             var input_type = document.createElement('input');
-            var disp_todotype = data_obj[get_index].p_todo[i].todo_type;
+            var disp_todotype = dataObj[getIndex].todo[i].todoType;
             input_type.setAttribute("value", disp_todotype);
             input_type.setAttribute("readOnly", true);
             input_type.setAttribute("id", "input_type" + i);
@@ -52,7 +52,7 @@ function filter_todo() {
             //todo_date
             var newElement_date = document.createElement('td');
             var input_date = document.createElement('input');
-            var disp_tododate = data_obj[get_index].p_todo[i].todo_duedate;
+            var disp_tododate = dataObj[getIndex].todo[i].todoDueDate;
 
             input_date.setAttribute("type", "date");
             input_date.setAttribute("value", disp_tododate)
@@ -63,7 +63,7 @@ function filter_todo() {
             //is reminder
             var newElement_isreminder = document.createElement('td');
             var input_isreminder = document.createElement('input');
-            var disp_todoisreminder = data_obj[get_index].p_todo[i].todo_isreminder;
+            var disp_todoisreminder = dataObj[getIndex].todo[i].todoIsReminder;
             input_isreminder.setAttribute("value", disp_todoisreminder);
             input_isreminder.setAttribute("readOnly", true);
             input_isreminder.setAttribute("id", "input_isreminder" + i);
@@ -72,7 +72,7 @@ function filter_todo() {
             //reminder date
             var newElement_reminderdate = document.createElement('td');
             var input_reminderdate = document.createElement('input');
-            var disp_remindertododate = data_obj[get_index].p_todo[i].todo_reminderdate;
+            var disp_remindertododate = dataObj[getIndex].todo[i].todoReminderDate;
             input_reminderdate.setAttribute("type", "date");
             input_reminderdate.setAttribute("value", disp_remindertododate);
             input_reminderdate.setAttribute("readOnly", true)
@@ -82,7 +82,7 @@ function filter_todo() {
             //ispublic
             var newElement_ispublic = document.createElement('td');
             var input_ispublic = document.createElement('input');
-            var disp_todoispublic = data_obj[get_index].p_todo[i].todo_ispublic;
+            var disp_todoispublic = dataObj[getIndex].todo[i].todoIsPublic;
             input_ispublic.setAttribute("value", disp_todoispublic);
             input_ispublic.setAttribute("readOnly", true);
             input_ispublic.setAttribute("id", "input_ispublic" + i);

@@ -1,22 +1,10 @@
-function store(email, firstname, lastname, password, gender, address, image) {
+function store() {
   //console.log(todo);
   var get_index = localStorage.getItem("unique_index");
   var data = localStorage.getItem("testJSON");
   var data_obj = JSON.parse(data);
-  todo = data_obj[get_index].p_todo;
+  todo = data_obj[get_index].todo;
   console.log(todo);
-
-  image = localStorage.getItem("img");
-  var person = {
-    p_email: email,
-    p_firstname: firstname,
-    p_lastname: lastname,
-    p_password: password,
-    p_gender: gender,
-    p_address: address,
-    p_img: image,
-    p_todo: todo
-  };
 
 
   var DataArr = ArrayCheck();

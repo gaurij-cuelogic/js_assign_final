@@ -7,6 +7,7 @@
 
 <body class="container" onload="profile()">
     <img id="logo" src="logo2.png" alt="logo">
+    <img id="image" src="" height="150px" width="150px" />
     <br>
 
     <p class="labels">Email :</p>
@@ -38,15 +39,15 @@
 
     <p class="labels">Profile image :</p>
     <p id="label_img" class="edit_inputs"></p>
-    <img id="image" src="" height="150px" width="150px" />
+    
     <br>
 
     <button class="buttons" id="edit_profile" onclick="editContent()">Edit</button>
-    <button onclick="profile_edit()" id="submit_profile" class="buttons">Submit </button>
-    <button onclick="profile_cancel()" id="cancel_profile" class="buttons">Cancel </button>
-    <button onclick="window.location.href = 'list_todo.html'" class="buttons">List Todo</button>
+    <button onclick="profileEdit()" id="submit_profile" class="buttons">Submit </button>
+    <button onclick="profileCancel()" id="cancel_profile" class="buttons">Cancel </button>
+    <button onclick="window.location.href = 'listTodo.html'" class="buttons">List Todo</button>
     <script type="text/javascript" src="./js/profile.js"></script>
-    <script type="text/javascript" src="./js/store_todo.js"></script>
+    <script type="text/javascript" src="./js/storeTodo.js"></script>
 </body>
 
 </html>

@@ -1,17 +1,17 @@
-function signin() {
+function signIn() {
   x = localStorage.getItem("testJSON");
   obj = JSON.parse(x);
 
 
-  signin_email = document.getElementById("email_sign").value;
-  signin_pwd = document.getElementById("pwd_sign").value;
+  signinEmail = document.getElementById("email_sign").value;
+  signinPwd = document.getElementById("pwd_sign").value;
   var index = 0;
-  if (signin_email == "" || signin_pwd == "") {
+  if (signinEmail == "" || signinPwd == "") {
     alert("password or email wrong");
     return;
   }
   for (var i = 0; i < obj.length; i++) {
-    if (signin_email == obj[i].p_email && signin_pwd == obj[i].p_password) {
+    if (signinEmail == obj[i].email && signinPwd == obj[i].password) {
 
       index = i;
       localStorage.setItem("unique_index", index);

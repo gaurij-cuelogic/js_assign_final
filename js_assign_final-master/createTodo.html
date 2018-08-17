@@ -32,7 +32,7 @@
     <b>
         <p class="texts">Due date :</p>
     </b>
-    <input type="date" id="todo_date" class="inputs">
+    <input type="date" id="todo_date" min ="2018-08-17" class="inputs" required>
     <b>
         <p class="texts">Is reminder? :</p>
     </b>
@@ -52,9 +52,9 @@
     <br>
     <input type="radio" id="n_public" value="no"> No
     <br>
-    <button onclick="create_todo()" class="buttons" id="create_button">Create todo</button>
-    <button onclick="window.location.href = 'list_todo.html'" class="buttons">List Todo</button>
+    <button onclick="createTodo()" class="buttons" id="create_button">Create todo</button>
+    <button onclick="window.location.href = 'listTodo.html'" class="buttons">List Todo</button>
 </body>
-<script type="text/javascript" src="./js/create_todo.js"></script>
+<script type="text/javascript" src="./js/createTodo.js"></script>
 
 </html>

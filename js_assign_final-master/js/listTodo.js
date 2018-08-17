@@ -1,12 +1,18 @@
-function list_todo() {
+function listTodo() {
   var get_index = localStorage.getItem("unique_index");
   var data = localStorage.getItem("testJSON");
   var data_obj = JSON.parse(data);
-  document.getElementById('userImage').src = data_obj[get_index].p_img;
 
+ // console.log(data_obj[get_index]);
+  document.getElementById('userImage').src = data_obj[get_index].profilePhoto;
 
+  if(data_obj[get_index].todo.length<=0)
+  {
+    document.getElementById("delete").style.display = "none";
+    document.getElementById("filter").style.display = "none";
+  }
 
-  for (var i = 0; i < data_obj[get_index].p_todo.length; i++) {
+  for (var i = 0; i < data_obj[get_index].todo.length; i++) {
     //table row
     var newElement_row = document.createElement('tr');
     index = i;
@@ -24,7 +30,7 @@ function list_todo() {
     //name
     var newElement_name = document.createElement('td');
     var input_name = document.createElement('input');
-    var disp_todoname = data_obj[get_index].p_todo[i].todo_name;
+    var disp_todoname = data_obj[get_index].todo[i].todoName;
     input_name.setAttribute("value", disp_todoname);
     input_name.setAttribute("readOnly", true);
     input_name.setAttribute("id", "input_name" + i);
@@ -34,7 +40,7 @@ function list_todo() {
     //desc
     var newElement_desc = document.createElement('td');
     var input_desc = document.createElement('input');
-    var disp_tododesc = data_obj[get_index].p_todo[i].todo_desc;
+    var disp_tododesc = data_obj[get_index].todo[i].todoDesc;
     input_desc.setAttribute("value", disp_tododesc);
     input_desc.setAttribute("readOnly", true);
     input_desc.setAttribute("id", "input_desc" + i);
@@ -45,7 +51,7 @@ function list_todo() {
     var input_type = document.createElement('select');
     input_type.disabled = true;
     input_type.setAttribute("width", "200px");
-    var disp_todotype = data_obj[get_index].p_todo[i].todo_type;
+    var disp_todotype = data_obj[get_index].todo[i].todoType;
     var option1 = document.createElement('option');
     option1.text = "personal";
     input_type.appendChild(option1);
@@ -70,7 +76,7 @@ function list_todo() {
     //todo_date
     var newElement_date = document.createElement('td');
     var input_date = document.createElement('input');
-    var disp_tododate = data_obj[get_index].p_todo[i].todo_duedate;
+    var disp_tododate = data_obj[get_index].todo[i].todoDueDate;
 
     input_date.setAttribute("type", "date");
     input_date.setAttribute("value", disp_tododate)
@@ -81,7 +87,7 @@ function list_todo() {
     //is reminder
     var newElement_isreminder = document.createElement('td');
     var input_isreminder = document.createElement('select');
-    var disp_todoisreminder = data_obj[get_index].p_todo[i].todo_isreminder;
+    var disp_todoisreminder = data_obj[get_index].todo[i].todoIsReminder;
     input_isreminder.disabled = true;
     var option1 = document.createElement('option');
     option1.text = "yes";
@@ -93,11 +99,23 @@ function list_todo() {
     input_isreminder.setAttribute("value", disp_todoisreminder);
     input_isreminder.setAttribute("id", "input_isreminder" + i);
     newElement_isreminder.appendChild(input_isreminder);
+    input_isreminder.onchange=function(){
+      alert("in disable");
+       if(document.getElementById("input_isreminder"+id).value =="no")
+     {
+       alert("in no")
+       document.getElementById("input_reminderdate" + id).readOnly = true;
+     }
+     else{
+       document.getElementById("input_reminderdate" + id).readOnly = false;
+     }
+   }
+    
 
     //reminder date
     var newElement_reminderdate = document.createElement('td');
     var input_reminderdate = document.createElement('input');
-    var disp_remindertododate = data_obj[get_index].p_todo[i].todo_reminderdate;
+    var disp_remindertododate = data_obj[get_index].todo[i].todoReminderDate;
     input_reminderdate.setAttribute("type", "date");
     input_reminderdate.setAttribute("value", disp_remindertododate);
     input_reminderdate.setAttribute("readOnly", true)
@@ -108,7 +126,7 @@ function list_todo() {
     var newElement_ispublic = document.createElement('td');
     var input_ispublic = document.createElement('select');
     input_ispublic.disabled = true;
-    var disp_todoispublic = data_obj[get_index].p_todo[i].todo_ispublic;
+    var disp_todoispublic = data_obj[get_index].todo[i].todoIsPublic;
     var option1 = document.createElement('option');
     option1.text = "yes"
     input_ispublic.appendChild(option1);
@@ -126,7 +144,16 @@ function list_todo() {
     newElement_editbutton.setAttribute("type", "button");
     newElement_editbutton.setAttribute("value", "edit");
     newElement_editbutton.setAttribute("id", i);
-    newElement_editbutton.setAttribute("onclick", "edit_todo(this.id).then((obj) => console.log(obj))");
+    newElement_editbutton.setAttribute("onclick", "editTodo(this.id).then((obj) => console.log(obj))");
+
+    //cancel button
+    var newElement_cancelbutton = document.createElement('input');
+    newElement_cancelbutton.setAttribute("type", "button");
+    newElement_cancelbutton.setAttribute("value", "cancel");
+    newElement_cancelbutton.setAttribute("id", i);
+    newElement_cancelbutton.setAttribute("onclick", "cancelTodo(this.id).then((obj) => console.log(obj))");
+
+
 
     //save button
     var newElement_submitbutton = document.createElement('input');
@@ -146,6 +173,7 @@ function list_todo() {
     newElement_row.appendChild(newElement_reminderdate);
     newElement_row.appendChild(newElement_ispublic);
     newElement_row.appendChild(newElement_editbutton);
+    newElement_row.appendChild(newElement_cancelbutton);
     newElement_row.appendChild(newElement_submitbutton);
     var list_table = document.getElementById("list_table");
 
@@ -163,38 +191,42 @@ function list_todo() {
 
 }
 
-function edit_todo(id) {
+function editTodo(id) {
   //console.log(newElement_row);
   document.getElementById("input_name" + id).readOnly = false;
   document.getElementById("input_desc" + id).readOnly = false;
   document.getElementById("input_type" + id).disabled = false;
   document.getElementById("input_date" + id).readOnly = false;
   document.getElementById("input_isreminder" + id).disabled = false;
-  document.getElementById("input_reminderdate" + id).readOnly = false;
+  //document.getElementById("input_reminderdate" + id).readOnly = false;
   document.getElementById("input_ispublic" + id).disabled = false;
+  //document.getElementById("input_isreminder" + id).onchange = disableDate();
 }
 
 
-function submit_todo(id) {
-  var get_index = localStorage.getItem("unique_index");
+ 
+
+
+function submitTodo(id) {
+  var getIndex = localStorage.getItem("unique_index");
   var data = localStorage.getItem("testJSON");
-  var obj_data = JSON.parse(data);
+  var objData = JSON.parse(data);
 
 
 
-  obj_todo = {
-    todo_name: document.getElementById("input_name" + id).value,
-    todo_desc: document.getElementById("input_desc" + id).value,
-    todo_type: document.getElementById("input_type" + id).value,
-    todo_duedate: document.getElementById("input_date" + id).value,
-    todo_isreminder: document.getElementById("input_isreminder" + id).value,
-    todo_reminderdate: document.getElementById("input_reminderdate" + id).value,
-    todo_ispublic: document.getElementById("input_ispublic" + id).value
+  objTodo = {
+    todoName: document.getElementById("input_name" + id).value,
+    todoDesc: document.getElementById("input_desc" + id).value,
+    todoType: document.getElementById("input_type" + id).value,
+    todoDueDate: document.getElementById("input_date" + id).value,
+    todoIsReminder: document.getElementById("input_isreminder" + id).value,
+    todoReminderDate: document.getElementById("input_reminderdate" + id).value,
+    todoIsPublic: document.getElementById("input_ispublic" + id).value
     //todo_attatchments : file 
   }
 
-  obj_data[get_index].p_todo[id] = obj_todo;
-  myJSON = JSON.stringify(obj_data);
+  objData[getIndex].todo[id] = objTodo;
+  myJSON = JSON.stringify(objData);
   localStorage.setItem("testJSON", myJSON);
   window.location.href = "list_todo.html";
 
@@ -202,11 +234,11 @@ function submit_todo(id) {
 }
 
 
-function delete_todo() {
-  var get_index = localStorage.getItem("unique_index");
+function deleteTodo() {
+  var getIndex = localStorage.getItem("unique_index");
   var data = localStorage.getItem("testJSON");
-  var data_obj = JSON.parse(data);
-  var arrLength = data_obj[get_index].p_todo.length
+  var dataObj = JSON.parse(data);
+  var arrLength = dataObj[getIndex].todo.length
   var delArray = [];
   if (document.getElementById("all").checked) {
 
@@ -228,52 +260,57 @@ function delete_todo() {
   }
   for (i = delArray.length - 1; i >= 0; i--) {
     var data = localStorage.getItem("testJSON");
-    var data_obj = JSON.parse(data);
+    var dataObj = JSON.parse(data);
 
     //document.getElementById("list_table").deleteRow(delArray[i]);
 
-    data_obj[get_index].p_todo.splice(delArray[i], 1);
+    dataObj[getIndex].todo.splice(delArray[i], 1);
 
-    myJSON = JSON.stringify(data_obj);
+    myJSON = JSON.stringify(dataObj);
     localStorage.setItem("testJSON", myJSON);
 
     location.reload();
   }
 }
 
-function cancel_todo() {
-  var get_index = localStorage.getItem("unique_index");
-  var data = localStorage.getItem("testJSON");
-  var data_obj = JSON.parse(data);
+function cancelTodo() {
 
-  for (var i = 0; i < data_obj[get_index].p_todo.length; i++) {
-    var disp_todoname = data_obj[get_index].p_todo[i].todo_name;
+  
+
+  var getIndex = localStorage.getItem("unique_index");
+  var data = localStorage.getItem("testJSON");
+  var dataObj = JSON.parse(data);
+
+  for (var i = 0; i < dataObj[getIndex].todo.length; i++) {
+    var disp_todoname = dataObj[getIndex].todo[i].todoName;
     document.getElementById("input_name" + i).value = disp_todoname;
     document.getElementById("input_name" + i).readOnly = true;
 
-    var disp_tododesc = data_obj[get_index].p_todo[i].todo_desc;
+    var disp_tododesc = dataObj[getIndex].todo[i].todoDesc;
     document.getElementById("input_desc" + i).value = disp_tododesc;
     document.getElementById("input_desc" + i).readOnly = true;
 
-    var disp_todotype = data_obj[get_index].p_todo[i].todo_type;
+    var disp_todotype = dataObj[getIndex].todo[i].todoType;
     document.getElementById("input_type" + i).value = disp_todotype;
     document.getElementById("input_type" + i).readOnly = true;
 
-    var disp_tododate = data_obj[get_index].p_todo[i].todo_duedate;
+    var disp_tododate = dataObj[getIndex].todo[i].todoDueDate;
     document.getElementById("input_date" + i).value = disp_tododate;
     document.getElementById("input_date" + i).readOnly = true;
 
-    var disp_todoisreminder = data_obj[get_index].p_todo[i].todo_isreminder;
+    var disp_todoisreminder = dataObj[getIndex].todo[i].todoIsReminder;
     document.getElementById("input_isreminder" + i).value = disp_todoisreminder;
     document.getElementById("input_isreminder" + i).readOnly = true;
 
-    var disp_remindertododate = data_obj[get_index].p_todo[i].todo_reminderdate;
+    var disp_remindertododate = dataObj[getIndex].todo[i].todoReminderDate;
     document.getElementById("input_reminderdate" + i).value = disp_remindertododate;
     document.getElementById("input_reminderdate" + i).readOnly = true;
 
-    var disp_todoispublic = data_obj[get_index].p_todo[i].todo_ispublic;
+    var disp_todoispublic = dataObj[getIndex].todo[i].todoIsPublic;
     document.getElementById("input_ispublic" + i).value = disp_remindertododate;
     document.getElementById("input_ispublic" + i).readOnly = true;
+
+    
 
   }
 }
