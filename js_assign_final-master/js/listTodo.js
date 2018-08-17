@@ -219,6 +219,17 @@ function submitTodo(id) {
 
 }
 
+function confirmBox()
+{
+  var message = confirm("Are you sure you want to delete?");
+  if(message == true)
+  {
+    deleteTodo();
+  }
+  else{
+    location.reload();
+  }
+}
 
 function deleteTodo() {
   var getIndex = localStorage.getItem("unique_index");

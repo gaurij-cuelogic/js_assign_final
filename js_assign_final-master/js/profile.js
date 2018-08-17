@@ -5,6 +5,7 @@ function profile() {
   document.getElementById("last").readOnly = true;
   document.getElementById("pwd").readOnly = true;
   document.getElementById("addresstxt").readOnly = true;
+  document.getElementById("pic").disabled= true;
 
 
   var get_index = localStorage.getItem("unique_index");
@@ -47,6 +48,7 @@ function editContent() {
   document.getElementById("last").readOnly = false;
   document.getElementById("pwd").readOnly = false;
   document.getElementById("addresstxt").readOnly = false;
+  document.getElementById("pic").disabled=false;
   var get_index = localStorage.getItem("unique_index");
   var userData = localStorage.getItem("testJSON");
   var obj = JSON.parse(userData);
@@ -54,7 +56,19 @@ function editContent() {
     
   }
   
+  var input=document.getElementById("pic");
 
+  input.addEventListener('change',function(e){
+    console.log(input.files);
+    var reader=new FileReader();
+    reader.onload=function()
+    {
+      var img=new Image();
+      img.src=reader.result;
+      localStorage.setItem("img",img.src);
+    }
+    reader.readAsDataURL(input.files[0])
+  })
 
 function profileEdit() {
   var getIndex = localStorage.getItem("unique_index");
@@ -85,6 +99,8 @@ function profileEdit() {
 
   dispAddress = document.getElementById("addresstxt").value;
   
+//pic
+var img=localStorage.getItem("img");
   var userData ={
     email : dispEmail,
     firstName: dispFirstName,
@@ -92,9 +108,10 @@ function profileEdit() {
     password : dispPassword,
     gender : gender,
     address: dispAddress,
-   profilePhoto : dispImg,
+   profilePhoto : img,
    todo:todo
   };
+  localStorage.removeItem("img");
   
 
   var DataArr = ArrayCheck();
@@ -117,8 +134,6 @@ function ArrayCheck() {
 }
 
 function profileCancel() {
-
-alert("in profile_cancel");
 
   var getIndex = localStorage.getItem("unique_index");
   var data = localStorage.getItem("testJSON");
@@ -146,5 +161,6 @@ alert("in profile_cancel");
     document.getElementById("addresstxt").value = disp_address;
     document.getElementById("addresstxt").readOnly = true;
 
+    
     location.reload();
   }
