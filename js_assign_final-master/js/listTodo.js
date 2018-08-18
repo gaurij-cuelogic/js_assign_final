@@ -214,7 +214,7 @@ function submitTodo(id) {
   objData[getIndex].todo[id] = objTodo;
   myJSON = JSON.stringify(objData);
   localStorage.setItem("testJSON", myJSON);
-  window.location.href = "list_todo.html";
+  window.location.href = "listTodo.html";
 
 
 }
