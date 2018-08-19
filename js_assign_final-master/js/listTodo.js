@@ -138,6 +138,8 @@ function listTodo() {
     newElement_cancelbutton.setAttribute("type", "button");
     newElement_cancelbutton.setAttribute("value", "cancel");
     newElement_cancelbutton.setAttribute("id", i);
+    newElement_cancelbutton.setAttribute("class", "Btn"+i);
+    newElement_cancelbutton.setAttribute("style","display:none");
     newElement_cancelbutton.setAttribute("onclick", "cancelTodo(this.id)");
 
 
@@ -147,6 +149,8 @@ function listTodo() {
     newElement_submitbutton.setAttribute("type", "button");
     newElement_submitbutton.setAttribute("value", "submit");
     newElement_submitbutton.setAttribute("id", i);
+    newElement_submitbutton.setAttribute("class", "Btn"+i);
+    newElement_submitbutton.setAttribute("style", "display:none");
     newElement_submitbutton.setAttribute("onclick", "submitTodo(this.id)");
 
 
@@ -183,6 +187,9 @@ function editTodo(id) {
   document.getElementById("input_date" + id).readOnly = false;
   document.getElementById("input_isreminder" + id).disabled = false;
   document.getElementById("input_ispublic" + id).disabled = false;
+  document.getElementById(id).style.display="none";
+  document.getElementsByClassName("Btn"+id)[0].style.display="inline";
+  document.getElementsByClassName("Btn"+id)[1].style.display="inline";
 }
 
 
@@ -269,7 +276,7 @@ function deleteTodo() {
   }
 }
 
-function cancelTodo() {
+function cancelTodo(id) {
 
   
 
@@ -306,9 +313,11 @@ function cancelTodo() {
     document.getElementById("input_ispublic" + i).value = disp_remindertododate;
     document.getElementById("input_ispublic" + i).readOnly = true;
 
-    
-
   }
+  
+  document.getElementById(id).style.display="inline";
+  document.getElementsByClassName("Btn"+id)[0].style.display="none";
+  document.getElementsByClassName("Btn"+id)[1].style.display="none";
 }
 
 function toggle(id){
@@ -324,3 +333,4 @@ function toggle(id){
        document.getElementById("input_reminderdate" + id).readOnly = false;
      }
    }
+
